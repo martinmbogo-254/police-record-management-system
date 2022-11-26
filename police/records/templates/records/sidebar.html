@@ -1,0 +1,40 @@
+{% extends 'records/base.html'%}
+{% load crispy_forms_tags %}
+{% block content%}
+<div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse m-1 p-1" style="position: fixed; margin-top:30px;">
+        <div class="position-sticky pt-3">
+          <nav>
+              
+    <div class="col-md-2 position-fixed bg-dark text-light p-2 rounded sidebar" data-spy="scroll" data-target="#main" style="min-height:600px;" id="sticky-sidebar">
+        <a class="navbar-brand" href="#">  {% load static %}
+            </a>
+        <div>
+            <h4 class="m-2">POLICE RECORD MANAGEMENT SYSTEM</h4>
+            <hr class="text-info">
+        </div>
+        
+            <div class="d-flex flex-column flex-shrink-1 text-black  p-2 position-sticky collapse mt-1" id="sidebar" style="width: 280px; position:fixed;">
+               
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/admin" class="nav-link text-light"> Admin</a>
+                        <a href="{% url 'home'%}" class="nav-link text-light"> Dashboard</a>
+                        <a href="{% url 'add_report' %}" class="nav-link text-light"> Add Record</a>
+
+                        <a href="{% url 'add_arrest' %}" class="nav-link text-light"> Add Arrest</a>
+                        <a href="{% url 'arrest_list' %}" class="nav-link text-light"> Arrest List</a>
+                        <a href="{% url 'report_list' %}" class="nav-link text-light"> Report List</a>
+
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+   
+
+
+    </div>
+</div>
+{% endblock content%}
