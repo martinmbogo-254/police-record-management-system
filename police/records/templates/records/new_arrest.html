@@ -8,9 +8,9 @@
 
         </div>
         <div class="col-md-9 mt-5">
-            <div class="container">
-                <div class="jumbotron m-3 mt-4">
-                    <h4> RECORD FORM</h4>
+            <div class="container-fluid">
+                <div class="jumbotron m-3 mt-2">
+                    <h4 class="text-center"> ARREST CREATE FORM</h4>
                     <form action="" method="post">
                         {% csrf_token %}
                         <div class="row">
@@ -40,7 +40,7 @@
                     </form>
                 </div>
                 <div>
-                    <a class="btn btn-info text-light m-2" href="{% url 'arrest_list' %}">Go to list</a>
+                    <a class="btn btn-info text-light m-2" href="{% url 'arrest_list' %}">Go to Arrest list</a>
                     <a class="btn btn-success  text-light m-2" href="{% url 'home'%}"> Home</a>
                 </div>
 

@@ -22,6 +22,8 @@ class Report (models.Model):
     date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(max_length=100)
 
+   
+
 class Arrest(models.Model):
     arrest_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     suspect_name = models.CharField(max_length=100)
@@ -30,3 +32,5 @@ class Arrest(models.Model):
     crime_type = models.ForeignKey(Crime,on_delete=models.CASCADE)
     crime_location = models.CharField(max_length=100)
     description = models.TextField(max_length=100)
+
+   

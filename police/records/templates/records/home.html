@@ -3,12 +3,98 @@
 {% block content%}
 <div class="">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             {% include 'records/sidebar.html'%}
 
                     </div>
-        <div class="col-md-8">
-            <h6>Main content section</h6>
+        <div class="col-md-9 mt-5">
+            <h4 class="text-center mb-4">Dashboard</h4>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-info">
+                            <h4 class="text-light">Cases Reported</h4>
+                        </div>
+                        <div class="card-body bg-info">
+                            <h3 class="text-center"><span class="badge badge-dark">{{total_reports}}</span></h3>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-success">
+                            <h4 class="text-light">Arrests Recorded</h4>
+                        </div>
+                        <div class="card-body bg-success">
+                            <h3 class="text-center"><span class="badge badge-dark">{{total_arrests}}</span></h3>
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row m-3 mt-4">
+                 <h4 class="text-center text-align-center mb-2 mt-3">Recent Reports</h4>
+              
+                 <table class="table mt-1">
+                    <thead>
+                      <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Suspect_name</th>
+                        <th scope="col">Suspect_Id</th>
+                        <th scope="col">Crime_type</th>
+                        <th scope="col">Crime_location</th>
+                        <th scope="col">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for recent_arrests in recent_arrests %}
+                      <tr>
+                        <td scope="row">{{recent_arrests.date}}</td>
+                        <td scope="row">{{recent_arrests.suspect_name}}</td>
+                        <td scope="row">{{recent_arrests.suspect_id}}</td>
+                        <td scope="row">{{recent_arrests.crime_type}}</td>
+                        <td scope="row">{{recent_arrests.crime_location}}</td>
+                        <td scope="row">{{recent_arrests.description}}</td>
+                      </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+                   <a href="{% url 'arrest_list' %}" class="btn btn-info" >View More Arrests</a>
+            </div>
+
+            <div class="row">
+                <h4 class="text-center text-align-center mb-2 mt-3">Recent Reports</h4>
+             
+                <table class="table mt-1">
+                   <thead>
+                     <tr>
+                       <th scope="col">Date</th>
+                       <th scope="col">Suspect_name</th>
+                       <th scope="col">Suspect_Id</th>
+                       <th scope="col">Crime_type</th>
+                       <th scope="col">Crime_location</th>
+                       <th scope="col">Description</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                       {% for recent_reports in recent_reports %}
+                     <tr>
+                       <td scope="row">{{recent_reports.date}}</td>
+                       <td scope="row">{{recent_reports.victim_name}}</td>
+                       <td scope="row">{{recent_reports.victim_id}}</td>
+                       <td scope="row">{{recent_reports.crime_type}}</td>
+                       <td scope="row">{{recent_reports.crime_location}}</td>
+                       <td scope="row">{{recent_reports.description}}</td>
+                     </tr>
+                    {% endfor %}
+                   </tbody>
+                 </table>
+                 <a href="{% url 'report_list' %}" class="btn btn-info" >View More Reports</a>
+
+           </div>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from . import views
-from .views import index, ReportCreateView, ArrestCreateView,arrest_list,report_list
+from .views import index, ReportCreateView, ArrestCreateView,arrest_list,report_list, login_request,logout_request,report,arrest_report
 
 urlpatterns = [
     path('', views.index, name='home'),
@@ -10,6 +10,10 @@ urlpatterns = [
     path('arrest/new', ArrestCreateView.as_view(), name='add_arrest'),
     path('arrest/list', views.arrest_list, name='arrest_list'),
     path('report/list', views.report_list, name='report_list'),
+    path('login', auth_views.LoginView.as_view(template_name='records/login.html'), name='login'),
+    path('reports_download', views.report , name='reports-download'),
+    path('arrest_download', views.arrest_report , name='arrest-download'),
+    path("logout", views.logout_request, name= "logout"),
 
 
 
