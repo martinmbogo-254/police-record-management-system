@@ -1,5 +1,7 @@
 from django.db import models
 import uuid
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Station(models.Model):
@@ -21,6 +23,8 @@ class Report (models.Model):
     crime_location = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(max_length=100)
+    # user = models.OneToOneField(User,on_delete=models.CASCADE,default=0)
+
 
    
 
@@ -32,5 +36,6 @@ class Arrest(models.Model):
     crime_type = models.ForeignKey(Crime,on_delete=models.CASCADE)
     crime_location = models.CharField(max_length=100)
     description = models.TextField(max_length=100)
+    # user = models.OneToOneField(User,on_delete=models.CASCADE, default=0)
 
    

@@ -16,4 +16,4 @@ admin.site.register(Crime)
 admin.site.register(Arrest,ArrestAdmin)
 admin.site.register(Report,ReportAdmin)
 
-admin.site.site_header = "POLICE RECORDS ADMINISTRATION"
+admin.site.site_header = "POLICE STATION RECORDS ADMINISTRATION"
