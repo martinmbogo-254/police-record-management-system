@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+
 from .models import Arrest, Report
 import csv
 from multiprocessing import context
@@ -57,6 +58,23 @@ def report_list(request):
         
     }
     return render(request, 'records/report_list.html', context)
+
+    # report details view
+def IncidenceDetail(request, pk):
+    incidence = Report.objects.get(id=pk)
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    arrest_list = Arrest.objects.filter(
+        Q(suspect_id__icontains=q) |
+        Q(suspect_name__icontains=q) |
+        Q(date__icontains=q) 
+       
+    )
+    context = {
+        'incidence': incidence, 
+        'arrest_list': arrest_list,
+    }
+    return render(request, 'records/incidence_detail.html', context)
 
 # @login_required(login_url='login')
 class ReportCreateView( CreateView):

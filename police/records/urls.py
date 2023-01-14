@@ -1,8 +1,8 @@
-from django.urls import path
+from django.urls import path,reverse
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from . import views
-from .views import index, ReportCreateView, ArrestCreateView,arrest_list,report_list, login_request,logout_request,report,arrest_report
+from .views import index, ReportCreateView, ArrestCreateView,IncidenceDetail,arrest_list,report_list, login_request,logout_request,report,arrest_report
 
 urlpatterns = [
     path('', views.index, name='home'),
@@ -14,8 +14,7 @@ urlpatterns = [
     path('reports_download', views.report , name='reports-download'),
     path('arrest_download', views.arrest_report , name='arrest-download'),
     path("logout", views.logout_request, name= "logout"),
-
-
+    path('incidence/<int:pk>/',views.IncidenceDetail, name='detail' ),
 
 
 ]

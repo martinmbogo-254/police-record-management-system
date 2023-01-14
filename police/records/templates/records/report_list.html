@@ -39,18 +39,23 @@
                             <th scope="col">Crime_type</th>
                             <th scope="col">Crime_location</th>
                             <th scope="col">Description</th>
+                            <th  scope="col">Links</th>
+                           
                             
                         </tr>
                     </thead>
                     <tbody>
                         {% for report_list in report_list %}
+                     
                         <tr>
                             <!-- <td scope="row">{{report_list.report_id}}</td> -->
+                          
                             <td scope="row">{{report_list.victim_name}}</td>
                             <td scope="row">{{report_list.victim_id}}</td>
                             <td scope="row">{{report_list.crime_type}}</td>
                             <td scope="row">{{report_list.crime_location}}</td>
                             <td scope="row">{{report_list.description}}</td>
+                            <td scope="row"><a href="{% url 'detail' report_list.id %}">Details</a></td>
 
                          
 
@@ -58,12 +63,13 @@
 
                             
                         </tr>
+              
                      {% empty %}
                      <div class="alert alert-info text-dark m-l ml-4 ">
                          <p class="text-center">Sorry No record available!!</p>
                      </div>
                         {% endfor%}
-
+                    
                     </tbody>
                     </table>
                     <div class="download ml-5">
