@@ -103,7 +103,7 @@ def arrest_list(request):
 class ArrestCreateView( CreateView):
     model = Arrest
     template_name = 'records/new_arrest.html'
-    fields=('suspect_name','suspect_id','crime_type','crime_location','description')
+    fields=('suspect_name','suspect_id')
     success_url = reverse_lazy('arrest_list')
 
 
