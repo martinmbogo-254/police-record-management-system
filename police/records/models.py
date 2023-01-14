@@ -20,7 +20,7 @@ class Report (models.Model):
     report_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     victim_name = models.CharField(max_length=100)
     victim_id = models.IntegerField(max_length=8)
-    crime_type = models.ForeignKey(Crime,on_delete=models.CASCADE)
+    crime_type = models.ForeignKey(Crime,on_delete=models.CASCADE,null=True, blank=False)
     crime_location = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(max_length=100)
@@ -33,7 +33,7 @@ class Report (models.Model):
    
 
 class Arrest(models.Model):
-    incidence = models.ForeignKey(Report, on_delete=models.CASCADE,null=True)
+    incidence = models.ForeignKey(Report, on_delete=models.CASCADE,blank=False)
     arrest_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     suspect_name = models.CharField(max_length=100)
     suspect_id = models.IntegerField(max_length=8)
