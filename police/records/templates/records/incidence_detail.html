@@ -36,7 +36,7 @@
                 <table class="table  p-2 jumbortron">
                     <thead>
                         <tr>
-                            <!-- <th scope="col">Report_id</th> -->
+                            <th scope="col">Date</th>
                             <th scope="col">Victim_name</th>
                             <th scope="col">Victim_Id</th>
                             <th scope="col">Crime_type</th>
@@ -46,6 +46,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <td scope="row">{{incidence.date}}</td>
+
                         <td scope="row">{{incidence.victim_name}}</td>
                             <td scope="row">{{incidence.victim_id}}</td>
                             <td scope="row">{{incidence.crime_type}}</td>
