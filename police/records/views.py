@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-
+from .forms import ArrestForm
 from .models import Arrest, Report
 import csv
 from multiprocessing import context
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views.generic.edit import CreateView
@@ -100,11 +100,33 @@ def arrest_list(request):
     return render(request, 'records/arrest_list.html', context)
 
 # @login_required(login_url='login')
-class ArrestCreateView( CreateView):
-    model = Arrest
-    template_name = 'records/new_arrest.html'
-    fields=('suspect_name','suspect_id')
-    success_url = reverse_lazy('report_list')
+
+
+@login_required
+def Arrest_create(request, pk):
+    # getting post objects by their id
+    incidence = Report.objects.get(id=pk)
+    # form method
+    if request.method == 'POST':
+        form = ArrestForm(request.POST)
+        # validating the form.
+        if form.is_valid():
+            arrest = form.save()
+            arrest.incidence = incidence
+            arrest.save()
+            return HttpResponseRedirect(reverse('detail', args=[pk]))
+    else:
+        form = ArrestForm()
+    context = {
+        'form': form,
+        'incidence': incidence,
+    }
+    return render(request, 'records/new_arrest.html', context)
+# class ArrestCreateView( CreateView):
+#     model = Arrest
+#     template_name = 'records/new_arrest.html'
+#     fields=('suspect_name','suspect_id')
+#     success_url = reverse_lazy('report_list')
 
 
 # login view

@@ -14,7 +14,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header bg-info">
-                            <h4 class="text-light">Cases Reported</h4>
+                            <h4 class="text-light">Incidences Reported</h4>
                         </div>
                         <div class="card-body bg-info">
                             <h3 class="text-center"><span class="badge badge-dark">{{total_reports}}</span></h3>
@@ -89,10 +89,15 @@
                        <td scope="row">{{recent_reports.crime_location}}</td>
                        <td scope="row">{{recent_reports.description}}</td>
                      </tr>
+
+                     {% empty %}
+                     <div class="alert alert-info text-dark m-l mt-3 ml-4 ">
+                      <p class="text-center">Sorry No Recent Incidences available!!</p>
+                  </div>
                     {% endfor %}
                    </tbody>
                  </table>
-                 <a href="{% url 'report_list' %}" class="btn btn-info ml-5" >View More Reports</a>
+                 <a href="{% url 'report_list' %}" class="btn btn-info ml-5" >View More Incidences</a>
 
            </div>
         </div>
